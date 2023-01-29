@@ -8,13 +8,17 @@ class CustomLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(AppImages.logo,
             height: MediaQuery.of(context).size.height * 0.25),
-        const Text(
-          "Todo List",
-          style: TextStyle(color: AppColors.primaryDark, fontSize: 30,),
-        ),
+        //COMPONETIZAR TEMAS 
+        const Text("Todo List",
+            style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: AppColors.black
+                )),
       ],
     );
   }
