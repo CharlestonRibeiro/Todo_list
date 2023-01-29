@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list/modules/splash/splash_page.dart';
+import 'package:todo_list/modules/sign_in/sign_in_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -9,7 +9,7 @@ class AppWidget extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Todo List',
-      home: SplashPage(),
+      home: SignInPage(),
     );
   }
 }
