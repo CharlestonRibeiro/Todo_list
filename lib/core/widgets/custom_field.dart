@@ -49,8 +49,8 @@ class _CustomFieldState extends State<CustomField> {
 
          obscureText: 
          _obscure == true 
-        ? widget.customObscureText
-        : false,
+        ? false
+        : true,
        
 
       

@@ -5,5 +5,6 @@ class AppColors {
   static const grey = Color(0xffF0F3F7);
   static const greyBolder = Colors.grey;
   static const red = Colors.red;
+  static const white = Colors.white;
   
 }
