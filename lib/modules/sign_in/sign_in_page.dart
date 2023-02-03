@@ -1,15 +1,27 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:todo_list/core/themes/app_colors.dart';
+import 'package:todo_list/core/utils/custom_form_validator.dart';
 import 'package:todo_list/core/widgets/custom_field.dart';
 import 'package:todo_list/core/widgets/custom_logo.dart';
 import 'package:todo_list/modules/sign_up/sign_up_page.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
   static const route = '/sign_in_page';
+
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +37,23 @@ class SignInPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
               child: Form(
+                key: _formKey,
                   child: Column(
+                    
                 children: [
-                  const CustomField(customLabel: 'E-mail'),
+                  CustomField(
+                    customLabel: 'E-mail',
+                    customController: _emailController,
+                    customValidator: CustomFormValidator.validateEmail,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-                  const CustomField(
-                    customLabel: 'Senha',
-                    customObscureText: true,
-                  ),
+                  CustomField(
+                      customLabel: 'Senha',
+                      customObscureText: true,
+                      customController: _passwordController,
+                      customValidator: CustomFormValidator.validatePassword),
                   const SizedBox(
                     height: 10,
                   ),
@@ -45,7 +64,16 @@ class SignInPage extends StatelessWidget {
                           onPressed: () {},
                           child: const Text('esqueceu sua senha?')),
                       ElevatedButton(
-                          onPressed: () {}, child: const Text('Login'))
+                          onPressed: () {
+                            final valid = _formKey.currentState != null &&
+                            _formKey.currentState!.validate();
+
+                             if (valid) {
+                                log('Login concluido');
+                             }else{
+                                log('ERROR ao logar');
+                             }
+                          }, child: const Text('Login'))
                     ],
                   )
                 ],
@@ -79,7 +107,7 @@ class SignInPage extends StatelessWidget {
                       TextButton(
                           onPressed: () {
                             Navigator.of(context).pushNamed(SignUpPage.route);
-                          }, 
+                          },
                           child: const Text('Cadastre-se'))
                     ],
                   )
