@@ -6,11 +6,15 @@ import 'package:todo_list/core/themes/todo_list_icons.dart';
 class CustomField extends StatefulWidget {
   final String customLabel;
   final bool customObscureText;
+  final TextEditingController? customController;
+  final String? Function(String?)? customValidator;
 
   const CustomField({
     Key? key,
     required this.customLabel,
-    this.customObscureText = false,
+    this.customObscureText = false, 
+    this.customController, 
+    this.customValidator,
   }) : super(key: key);
 
   @override
@@ -51,7 +55,9 @@ class _CustomFieldState extends State<CustomField> {
          _obscure == true 
         ? false
         : true,
-       
+
+        controller: widget.customController,
+        validator: widget.customValidator,      
 
       
     );

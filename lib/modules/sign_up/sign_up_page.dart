@@ -1,12 +1,24 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:todo_list/core/themes/app_colors.dart';
+import 'package:todo_list/core/utils/custom_form_validator.dart';
 import 'package:todo_list/core/widgets/custom_field.dart';
 import 'package:todo_list/core/widgets/custom_logo.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
   static const route = '/sign_up_page';
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,23 +62,52 @@ class SignUpPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
             child: Form(
+              key: _formKey,
               child: Column(
-                children:  [
-                  const CustomField(customLabel: 'E-mail'),
+                children: [
+                  CustomField(
+                    customLabel: 'E-mail',
+                    customController: _emailController,
+                    customValidator: CustomFormValidator.validateEmail,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-                  const CustomField(customLabel: 'Senha', customObscureText: true),
+                  CustomField(
+                      customLabel: 'Senha',
+                      customObscureText: true,
+                      customController: _passwordController,
+                      customValidator: CustomFormValidator.validatePassword),
                   const SizedBox(
                     height: 20,
                   ),
-                  const CustomField(customLabel: 'Confirma Senha', customObscureText: true),
+                  CustomField(
+                    customLabel: 'Confirma Senha',
+                    customObscureText: true,
+                    customValidator: (value) =>
+                        CustomFormValidator.confirmValidatePassword(
+                            _passwordController.text, value),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-                 Align(
-                  alignment: Alignment.bottomRight,
-                  child: ElevatedButton(onPressed: () {}, child:  const Text('Salvar')))
+                  Align(
+                      alignment: Alignment.bottomRight,
+                      child: ElevatedButton(
+                          onPressed: () {
+            
+                            final valid = _formKey.currentState != null &&
+                            _formKey.currentState!.validate();
+
+                             if (valid) {
+                                log('Login concluido');
+                             }else{
+                                log('ERROR ao logar');
+                             }
+                   
+                   
+
+                          }, child: const Text('Salvar')))
                 ],
               ),
             ),

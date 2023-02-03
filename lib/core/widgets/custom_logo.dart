@@ -12,7 +12,7 @@ class CustomLogo extends StatelessWidget {
       children: [
         Image.asset(AppImages.logo,
             height: MediaQuery.of(context).size.height * 0.25),
-        //COMPONETIZAR TEMAS 
+        
         const Text("Todo List",
             style: TextStyle(
                 fontSize: 30,
