@@ -1,11 +1,13 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:todo_list/exception/auth_exception.dart';
-import 'package:todo_list/models/user_model.dart';
-import 'package:todo_list/services/auth_service.dart';
+import 'package:todo_list/src/core/exception/auth_exception.dart';
+import 'package:todo_list/src/models/user_model.dart';
+import 'package:todo_list/src/services/auth_service.dart';
 
 class AuthRepository implements AuthService {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseAuth _firebaseAuth;
+
+  AuthRepository(this._firebaseAuth);
 
   @override
   Future<UserModel> signUp(

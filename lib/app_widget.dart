@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list/modules/sign_in/sign_in_page.dart';
-import 'package:todo_list/modules/sign_up/sign_up_page.dart';
-import 'package:todo_list/modules/splash/splash_page.dart';
+import 'package:todo_list/src/modules/sign_in/sign_in_page.dart';
+import 'package:todo_list/src/modules/sign_up/sign_up_page.dart';
+import 'package:todo_list/src/modules/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});

@@ -3,11 +3,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
-import 'package:todo_list/core/themes/app_colors.dart';
-import 'package:todo_list/core/utils/custom_form_validator.dart';
-import 'package:todo_list/core/widgets/custom_field.dart';
-import 'package:todo_list/core/widgets/custom_logo.dart';
-import 'package:todo_list/modules/sign_up/sign_up_page.dart';
+import 'package:todo_list/src/core/themes/app_colors.dart';
+import 'package:todo_list/src/core/utils/custom_form_validator.dart';
+import 'package:todo_list/src/core/widgets/custom_field.dart';
+import 'package:todo_list/src/core/widgets/custom_logo.dart';
+import 'package:todo_list/src/modules/sign_up/sign_up_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});

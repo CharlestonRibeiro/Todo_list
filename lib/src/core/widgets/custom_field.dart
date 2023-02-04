@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:todo_list/core/themes/app_colors.dart';
-import 'package:todo_list/core/themes/todo_list_icons.dart';
+import 'package:todo_list/src/core/themes/app_colors.dart';
+import 'package:todo_list/src/core/themes/todo_list_icons.dart';
 
 class CustomField extends StatefulWidget {
   final String customLabel;

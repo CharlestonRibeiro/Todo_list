@@ -1,6 +1,16 @@
 class CustomFormValidator {
   CustomFormValidator._();
 
+  static String? validateName(String? value) {
+    if (value != null && value.isEmpty) {
+      return "Campo obrigatório";
+    }
+
+     if (value!.length < 3  ) {
+      return "Nome muito pequena.";
+    }
+    return null;
+  }
 
   static String? validateEmail(String? value) {
     final validatedEmail = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
@@ -14,13 +24,12 @@ class CustomFormValidator {
   }
 
   static String? validatePassword(String? value) {
-    final validatedPassword =
-        RegExp(r"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
     if (value != null && value.isEmpty) {
       return "Campo obrigatório";
     }
-    if (value != null && !validatedPassword.hasMatch(value)) {
-      return "Dados inválidos";
+  
+    if (value!.length < 3  ) {
+      return "Senha muito pequena.";
     }
     return null;
   }
@@ -34,6 +43,4 @@ class CustomFormValidator {
     }
     return null;
   }
-
-
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list/core/themes/app_colors.dart';
-import 'package:todo_list/core/themes/app_images.dart';
+import 'package:todo_list/src/core/themes/app_colors.dart';
+import 'package:todo_list/src/core/themes/app_images.dart';
 
 class CustomLogo extends StatelessWidget {
   const CustomLogo({super.key});
