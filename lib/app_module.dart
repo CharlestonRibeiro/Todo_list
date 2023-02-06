@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/app_widget.dart';
-import 'package:todo_list/src/modules/sign_up/sign_up_controller.dart';
+import 'package:todo_list/src/modules/auth/recover_password/recover_password_controller.dart';
+import 'package:todo_list/src/modules/auth/sign_in/sign_in_controller.dart';
+import 'package:todo_list/src/modules/auth/sign_up/sign_up_controller.dart';
 import 'package:todo_list/src/repositories/auth_repository.dart';
 import 'package:todo_list/src/services/auth_service.dart';
 
@@ -19,7 +21,11 @@ class AppModule extends StatelessWidget {
         Provider<AuthService>(
             create: (context) => AuthRepository(FirebaseAuth.instance)),
         Provider(
-            create: (context) => SignUpController(context.read<AuthService>())),    
+            create: (context) => SignUpController(context.read<AuthService>())),
+        Provider(
+            create: (context) => SignInController(context.read<AuthService>())),
+        Provider(
+            create: (context) => RecoverPasswordController(context.read<AuthService>())),
       ],
       child: const AppWidget(),
     );

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/src/modules/home/home_page.dart';
-import 'package:todo_list/src/modules/sign_in/sign_in_page.dart';
-import 'package:todo_list/src/modules/sign_up/sign_up_page.dart';
+import 'package:todo_list/src/modules/auth/recover_password/recover_password_page.dart';
+import 'package:todo_list/src/modules/auth/sign_in/sign_in_page.dart';
+import 'package:todo_list/src/modules/auth/sign_up/sign_up_page.dart';
 import 'package:todo_list/src/modules/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -18,6 +19,7 @@ class AppWidget extends StatelessWidget {
         SplashPage.route: (_) => const SplashPage(),
         SignInPage.route: (_) => const SignInPage(),
         SignUpPage.route: (_) => const SignUpPage(),
+        RecoverPasswordPage.route: (_) => const RecoverPasswordPage(),
         HomePage.route: (_) => const HomePage(),
       },
     );

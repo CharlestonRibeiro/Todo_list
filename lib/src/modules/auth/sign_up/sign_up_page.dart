@@ -2,14 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_list/src/core/themes/app_colors.dart';
 import 'package:todo_list/src/core/utils/custom_form_validator.dart';
+import 'package:todo_list/src/core/widgets/custom_app_bar.dart';
 import 'package:todo_list/src/core/widgets/custom_auth_dialog.dart';
 import 'package:todo_list/src/core/widgets/custom_field.dart';
 import 'package:todo_list/src/core/widgets/custom_logo.dart';
-import 'package:todo_list/src/modules/sign_in/sign_in_page.dart';
-import 'package:todo_list/src/modules/sign_up/sign_up_controller.dart';
-import 'package:todo_list/src/modules/sign_up/sing_up_state.dart';
+import 'package:todo_list/src/modules/auth/sign_in/sign_in_page.dart';
+import 'package:todo_list/src/modules/auth/sign_up/sign_up_controller.dart';
+import 'package:todo_list/src/modules/auth/sign_up/sing_up_state.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -47,39 +47,13 @@ class _SignUpPageState extends State<SignUpPage> {
            final error = (state).message;
           customAuthDialog(
               context, error, 'Tentar novamente', SignUpPage.route);
-        } else if (state is SignUpSucessState) {
+        } else if (state is SignUpSuccessState) {
           customAuthDialog(context, 'Registro realizado com sucesso!!!',
               'Entrar', SignInPage.route);
         }
       },
         child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: AppColors.white,
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text('Todo List',
-                    style: TextStyle(fontSize: 15, color: AppColors.black)),
-                Text('Cadastro',
-                    style: TextStyle(fontSize: 20, color: AppColors.black)),
-              ],
-            ),
-            leading: IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: ClipOval(
-                child: Container(
-                  color: AppColors.greyBolder,
-                  padding: const EdgeInsets.all(8),
-                  child: const Icon(
-                    Icons.arrow_back_ios_outlined,
-                    size: 20,
-                    color: AppColors.grey,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          appBar: customAppBar(context, 'Cadastro'),
           body: ListView(
             children: [
               SizedBox(

@@ -12,8 +12,8 @@ class CustomField extends StatefulWidget {
   const CustomField({
     Key? key,
     required this.customLabel,
-    this.customObscureText = false, 
-    this.customController, 
+    this.customObscureText = false,
+    this.customController,
     this.customValidator,
   }) : super(key: key);
 
@@ -44,22 +44,15 @@ class _CustomFieldState extends State<CustomField> {
                     });
                   },
                   icon: Icon(
-                      _obscure == true 
-                  ? TodoListIcons.eye
-                  : TodoListIcons.eye_slash,  
+                    _obscure == true
+                        ? TodoListIcons.eye
+                        : TodoListIcons.eye_slash,
                     size: 15,
                   ))
               : null),
-
-         obscureText: 
-         _obscure == true 
-        ? false
-        : true,
-
-        controller: widget.customController,
-        validator: widget.customValidator,      
-
-      
+      obscureText: _obscure == true ? false : true,
+      controller: widget.customController,
+      validator: widget.customValidator,
     );
   }
 }

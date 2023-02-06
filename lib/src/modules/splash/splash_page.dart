@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/src/core/widgets/custom_logo.dart';
-import 'package:todo_list/src/modules/sign_in/sign_in_page.dart';
+import 'package:todo_list/src/modules/home/home_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 4)).then((value) {
-      Navigator.of(context).pushReplacementNamed(SignInPage.route);
+      Navigator.of(context).pushReplacementNamed(HomePage.route);
     });
   }
 

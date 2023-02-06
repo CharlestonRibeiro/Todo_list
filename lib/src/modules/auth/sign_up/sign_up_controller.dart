@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_list/src/modules/sign_up/sing_up_state.dart';
+import 'package:todo_list/src/modules/auth/sign_up/sing_up_state.dart';
 import 'package:todo_list/src/services/auth_service.dart';
 import 'package:todo_list/src/services/secure_storage.dart';
 
@@ -34,7 +34,7 @@ class SignUpController extends Cubit<SignUpState> {
         throw Exception();
       }
       log('usuario criado com sucesso');
-      emit(SignUpSucessState());
+      emit(SignUpSuccessState());
     } catch (e) {
       log(e.toString());
       emit(SignUpErrorState(e.toString()));
