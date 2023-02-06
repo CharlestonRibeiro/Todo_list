@@ -26,20 +26,38 @@ class AuthRepository implements AuthService {
       }
     } on FirebaseAuthException catch (e, s) {
       log(e.message.toString());
-      log(s.toString());
-      if (e.code == 'email-already-in-use') {
-        final loginTypes =
-            await _firebaseAuth.fetchSignInMethodsForEmail(email);
-        if (loginTypes.contains('password')) {
-          throw AuthException(
-              message: 'E-mail já utilizado, por favor escolha outro e-mail');
-        } else {
-          throw AuthException(
-              message:
-                  'Você se cadastrou no TodoList pelo Google, por favor utilize ele para entrar!!!');
-        }
-      } else {
-        throw AuthException(message: e.message ?? 'Erro ao registrar usuário');
+
+      switch (e.message) {
+        case 'The email address is already in use by another account.':
+          throw 'Esse e-mail já está associado a uma conta. Verifique seus dados ou solicite a recuperação de conta.';
+
+        case 'The password is invalid or the user does not have a password.':
+          throw 'A combinação de senha e/ou e-mail inserida não é valida. Verifique os dados e tente novamente.';
+
+        case 'There is no user record corresponding to this identifier. The user may have been deleted.':
+          throw 'Conta de usuário não identificada. Verifique os dados e tente novamente.';
+
+        case 'Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.':
+          throw 'O acesso a essa conta está temporariamente suspenso devido às diversas tentativas de entrada com dados inválidos. Solicite a recuperação de conta ou tente novamente mais tarde';
+
+        default:
+          log(s.toString());
+          if (e.code == 'email-already-in-use') {
+            final loginTypes =
+                await _firebaseAuth.fetchSignInMethodsForEmail(email);
+            if (loginTypes.contains('password')) {
+              throw AuthException(
+                  message:
+                      'E-mail já utilizado, por favor escolha outro e-mail');
+            } else {
+              throw AuthException(
+                  message:
+                      'Você se cadastrou no TodoList pelo Google, por favor utilize ele para entrar!!!');
+            }
+          } else {
+            throw AuthException(
+                message: e.message ?? 'Erro ao registrar usuário');
+          }
       }
     }
   }

@@ -28,7 +28,7 @@ class CustomFormValidator {
       return "Campo obrigatório";
     }
   
-    if (value!.length < 3  ) {
+    if (value!.length < 6  ) {
       return "Senha muito pequena.";
     }
     return null;
