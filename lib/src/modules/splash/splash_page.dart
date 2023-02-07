@@ -4,8 +4,6 @@ import 'package:todo_list/src/modules/home/home_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
-  
-
 
   static const route = '/splash_page';
 
@@ -14,7 +12,6 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
   void initState() {
     super.initState();

@@ -53,7 +53,7 @@ class _SignUpPageState extends State<SignUpPage> {
         }
       },
         child: Scaffold(
-          appBar: customAppBar(context, 'Cadastro'),
+          appBar: customAppBar(context: context, customIcon: true, subTitle:'Cadastro'),
           body: ListView(
             children: [
               SizedBox(

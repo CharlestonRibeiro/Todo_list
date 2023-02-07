@@ -13,7 +13,9 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Todo List',
-      home: const SplashPage(),
+     
+
+      initialRoute: SplashPage.route,
          
       routes: {
         SplashPage.route: (_) => const SplashPage(),

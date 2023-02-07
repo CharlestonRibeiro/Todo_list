@@ -51,7 +51,7 @@ class _RecoverPasswordPageState extends State<RecoverPasswordPage> {
         }
       },
       child: Scaffold(
-          appBar: customAppBar(context, 'Recuperar senha'),
+          appBar: customAppBar(context: context, subTitle:'Recuperar senha', customIcon: true,),
           body: Center(
             child: SingleChildScrollView(
                 child: Column(
