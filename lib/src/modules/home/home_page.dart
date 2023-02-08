@@ -4,6 +4,7 @@ import 'package:todo_list/src/core/themes/todo_list_icons.dart';
 import 'package:todo_list/src/core/widgets/custom_drawer.dart';
 import 'package:todo_list/src/core/widgets/custom_filters.dart';
 import 'package:todo_list/src/core/widgets/custom_header.dart';
+import 'package:todo_list/src/core/widgets/custom_card_task.dart';
 import 'package:todo_list/src/core/widgets/custom_week_filter.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,19 +38,22 @@ class HomePage extends StatelessWidget {
                   maxHeight: constraints.maxHeight,
                   minWidth: constraints.maxWidth
                 ),
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: IntrinsicHeight(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        CustomHeader(),
-                        CustomFilters(),
-                        CustomWeekFilter(),
-                      ],
-
-                    ),
-                    ),
+                child: SingleChildScrollView(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    child: IntrinsicHeight(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          CustomHeader(),
+                          CustomFilters(),
+                          CustomWeekFilter(),
+                          CustomCardTask(),
+                          SizedBox(height: 30,)
+                        ],
+                      ),
+                      ),
+                  ),
                 )
               ),
             );
