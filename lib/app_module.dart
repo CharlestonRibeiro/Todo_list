@@ -5,7 +5,8 @@ import 'package:todo_list/app_widget.dart';
 import 'package:todo_list/src/modules/auth/recover_password/recover_password_controller.dart';
 import 'package:todo_list/src/modules/auth/sign_in/sign_in_controller.dart';
 import 'package:todo_list/src/modules/auth/sign_up/sign_up_controller.dart';
-import 'package:todo_list/src/repositories/auth_repository.dart';
+import 'package:todo_list/src/modules/tasks/task_create_controller.dart';
+import 'package:todo_list/src/repositories/auth/auth_repository.dart';
 import 'package:todo_list/src/services/auth_service.dart';
 
 class AppModule extends StatelessWidget {
@@ -26,6 +27,9 @@ class AppModule extends StatelessWidget {
             create: (context) => SignInController(context.read<AuthService>())),
         Provider(
             create: (context) => RecoverPasswordController(context.read<AuthService>())),
+       Provider(
+            create: (context) => TaskCreateController()),     
+            
       ],
       child: const AppWidget(),
     );

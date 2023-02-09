@@ -6,6 +6,7 @@ import 'package:todo_list/src/core/widgets/custom_filters.dart';
 import 'package:todo_list/src/core/widgets/custom_header.dart';
 import 'package:todo_list/src/core/widgets/custom_card_task.dart';
 import 'package:todo_list/src/core/widgets/custom_week_filter.dart';
+import 'package:todo_list/src/modules/tasks/task_create_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -28,6 +29,12 @@ class HomePage extends StatelessWidget {
               ],
             )
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            Navigator.of(context).pushNamed(TaskCreatePage.route);
+          },
+          child: const Icon(Icons.add),
         ),
         drawer: customDrawer(),
         body: LayoutBuilder(

@@ -4,6 +4,7 @@ import 'package:todo_list/src/modules/auth/recover_password/recover_password_pag
 import 'package:todo_list/src/modules/auth/sign_in/sign_in_page.dart';
 import 'package:todo_list/src/modules/auth/sign_up/sign_up_page.dart';
 import 'package:todo_list/src/modules/splash/splash_page.dart';
+import 'package:todo_list/src/modules/tasks/task_create_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -23,6 +24,7 @@ class AppWidget extends StatelessWidget {
         SignUpPage.route: (_) => const SignUpPage(),
         RecoverPasswordPage.route: (_) => const RecoverPasswordPage(),
         HomePage.route: (_) => const HomePage(),
+        TaskCreatePage.route: (_) => const TaskCreatePage(),
       },
     );
   }
